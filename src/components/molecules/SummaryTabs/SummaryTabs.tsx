@@ -77,6 +77,7 @@ const SummaryTabs = () => {
         {tabs.map((title, index) => (
           <button
             key={title}
+            data-testid={`tab-${title}`}
             className={` py-2 text-sm leading-[18px] text-primary-grey cursor-pointer ${
               index === activeIndex ? 'font-semibold' : 'font-thin'
             }`}
@@ -92,7 +93,10 @@ const SummaryTabs = () => {
         ))}
       </div>
 
-      <div className="text-[34px] font-extralight text-dark-grey text-center leading-[100%] tracking-[0%]">
+      <div
+        data-testid="total-amount"
+        className="text-[34px] font-extralight text-dark-grey text-center leading-[100%] tracking-[0%]"
+      >
         {loadingTransactions ? (
           <div className="w-[207px] h-[40px] bg-light-grey rounded-[16px] animate-pulse mx-auto" />
         ) : (

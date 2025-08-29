@@ -1,7 +1,11 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import AppRoutes from './AppRoutes'
 import { useContextTransactions } from './context/TransactionsContext'
 import { useGetTransactions } from './services/useTransactions'
+import Sidebar from './components/molecules/Sidebar/Sidebar'
+import UserPhoto from '../src/assets/images/UserPhoto.svg'
+import Header from './components/molecules/Header/Header'
+import UserHeader from './components/molecules/UserHeader/UserHeader'
 
 const App: React.FC = () => {
   const { data, isLoading, isError, error } = useGetTransactions()
@@ -11,6 +15,16 @@ const App: React.FC = () => {
     setPaymentMethods,
     setLoadingTransactions,
     setError,
+  } = useContextTransactions()
+
+  const userData = {
+    name: 'Jessica',
+    image: UserPhoto,
+  }
+
+  const [openMenu, setOpenMenu] = useState<boolean>(false)
+  const {
+    appState: { isSidePanelOpen },
   } = useContextTransactions()
 
   useEffect(() => {
@@ -28,8 +42,20 @@ const App: React.FC = () => {
   }, [data])
 
   return (
-    <div className="mx-auto">
-      <AppRoutes />
+    <div className="flex flex-col h-screen w-screen">
+      {/* Header mobile */}
+      <Header setOpenMenu={setOpenMenu} openMenu={openMenu} />
+
+      {/* SideBar desktop */}
+      <Sidebar />
+
+      <main
+        className={`flex-1 flex flex-col ml-0 md:ml-[25%] ${isSidePanelOpen ? 'overflow-hidden' : ''}`}
+      >
+        <UserHeader name={userData.name} imageUrl={userData.image} />
+
+        <AppRoutes />
+      </main>
     </div>
   )
 }

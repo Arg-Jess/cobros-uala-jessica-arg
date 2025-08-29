@@ -27,3 +27,11 @@ html,
 body {
   font-family: 'Public Sans', sans-serif;
 }
+
+.scroll-hidden {
+  -ms-overflow-style: none; /* IE y Edge */
+  scrollbar-width: none; /* Firefox */
+}
+.scroll-hidden::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Opera */
+}

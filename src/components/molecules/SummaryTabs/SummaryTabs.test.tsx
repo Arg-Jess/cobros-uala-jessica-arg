@@ -1,5 +1,6 @@
 import { render, screen, fireEvent } from '@testing-library/react'
 import SummaryTabs from './SummaryTabs'
+import React from 'react'
 
 jest.mock('../../../context/TransactionsContext', () => ({
   useContextTransactions: jest.fn(),
@@ -32,18 +33,17 @@ describe('SummaryTabs', () => {
     expect(screen.getByText('Tus cobros')).toBeInTheDocument()
   })
 
-  it('renders all tabs and highlights active tab', () => {
+  it('renders all tabs', () => {
     render(<SummaryTabs />)
-    expect(screen.getByText('Diario')).toBeInTheDocument()
-    expect(screen.getByText('Semanal')).toBeInTheDocument()
-    expect(screen.getByText('Mensual')).toBeInTheDocument()
+    expect(screen.getByTestId('tab-Diario')).toBeInTheDocument()
+    expect(screen.getByTestId('tab-Semanal')).toBeInTheDocument()
+    expect(screen.getByTestId('tab-Mensual')).toBeInTheDocument()
   })
 
   it('renders total amount correctly', () => {
     render(<SummaryTabs />)
-    expect(screen.getByText('+')).toBeInTheDocument()
-    expect(screen.getByText('$')).toBeInTheDocument()
-    expect(screen.getByText('150')).toBeInTheDocument()
+    const total = screen.getByTestId('total-amount')
+    expect(total).toHaveTextContent('150')
   })
 
   it('renders metrics link', () => {
@@ -51,10 +51,26 @@ describe('SummaryTabs', () => {
     expect(screen.getByText('Ver métricas')).toBeInTheDocument()
   })
 
-  it('changes active tab when clicked', () => {
+  it('changes active tab and updates total correctly', () => {
     render(<SummaryTabs />)
-    const diarioTab = screen.getByText('Diario')
+
+    const diarioTab = screen.getByTestId('tab-Diario')
+    const semanalTab = screen.getByTestId('tab-Semanal')
+    const mensualTab = screen.getByTestId('tab-Mensual')
+    const total = screen.getByTestId('total-amount')
+
+    expect(semanalTab).toHaveClass('font-semibold')
+    expect(diarioTab).not.toHaveClass('font-semibold')
+    expect(mensualTab).not.toHaveClass('font-semibold')
+
     fireEvent.click(diarioTab)
     expect(diarioTab).toHaveClass('font-semibold')
+    expect(semanalTab).not.toHaveClass('font-semibold')
+
+    fireEvent.click(mensualTab)
+    expect(mensualTab).toHaveClass('font-semibold')
+    expect(diarioTab).not.toHaveClass('font-semibold')
+
+    expect(total).toBeInTheDocument()
   })
 })

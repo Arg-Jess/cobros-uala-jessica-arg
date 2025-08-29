@@ -5,7 +5,7 @@ interface UserHeaderProps {
 
 const UserHeader: React.FC<UserHeaderProps> = ({ name, imageUrl }) => (
   <div
-    className="flex items-center py-5 px-6 bg-white rounded gap-4 hidden md:flex"
+    className="flex items-center py-5 px-6 bg-white rounded gap-4 hidden md:flex sticky top-0 z-50 "
     style={{ boxShadow: '0px 8px 20px 0px #E7EEFF80' }}
   >
     <img src={imageUrl} alt={name} className="w-10 h-10 rounded-full" />
