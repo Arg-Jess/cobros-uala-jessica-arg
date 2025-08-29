@@ -42,7 +42,7 @@ const App: React.FC = () => {
   }, [data])
 
   return (
-    <div className="flex flex-col h-screen w-screen">
+    <div className="flex flex-col h-screen w-screen overflow-x-hidden">
       {/* Header mobile */}
       <Header setOpenMenu={setOpenMenu} openMenu={openMenu} />
 
