@@ -28,7 +28,8 @@ describe('HomePage', () => {
       'items-center',
       'pt-6',
       'mt-[64px]',
-      'md:mt-[0]',
+      'md:mt-0',
+      'min-h-0',
     )
   })
 })

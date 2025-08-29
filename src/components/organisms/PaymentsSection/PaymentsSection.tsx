@@ -85,7 +85,7 @@ const PaymentsSection = () => {
 
   return (
     <>
-      <div className="flex flex-col w-full md:w-[440px] gap-2 relative px-4 md:px-0">
+      <div className="flex flex-col w-full md:w-[440px] gap-2 relative px-4 md:px-0  min-h-0">
         <div className="flex items-center justify-between ">
           <h3 className="ml-2 text-sm font-semibold text-dark-grey">
             Historial de transacciones
@@ -105,7 +105,8 @@ const PaymentsSection = () => {
             </button>
           </div>
         </div>
-        <div className="flex flex-col gap-2">
+
+        <div className="flex flex-col flex-1 min-h-0 gap-2 overflow-y-auto pr-2 scroll-hidden">
           {loadingTransactions ? <SkeletonTransactionList /> : transactionItems}
         </div>
 

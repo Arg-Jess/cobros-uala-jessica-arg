@@ -50,7 +50,7 @@ const App: React.FC = () => {
       <Sidebar />
 
       <main
-        className={`flex-1 flex flex-col ml-0 md:ml-[25%] ${isSidePanelOpen ? 'overflow-hidden' : ''}`}
+        className={`flex-1 flex flex-col h-screen ml-0 md:ml-[25%] ${isSidePanelOpen ? 'overflow-hidden' : ''}`}
       >
         <UserHeader name={userData.name} imageUrl={userData.image} />
 
