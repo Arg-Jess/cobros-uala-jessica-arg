@@ -14,16 +14,23 @@
 
 ## Arquitectura del proyecto
 
-src/
-├── assets/ # Imágenes, íconos, recursos estáticos
-├── components/ # Componentes reutilizables (atoms, molecules, organisms)
-├── context/ # Context API para estado global
-├── pages/  
-├── services/ # Conexión a APIs
-├── utilities/ # Funciones auxiliares
-├── App.tsx
-├── main.tsx
-├── index.css # Tailwind CSS
+assets/ → Imágenes, íconos y recursos estáticos
+
+components/ → Componentes reutilizables (atoms, molecules, organisms)
+
+context/ → Context API para estado global
+
+pages/ → Páginas principales de la aplicación
+
+services/ → Conexión a APIs y lógica de datos
+
+utilities/ → Funciones auxiliares y helpers
+
+App.tsx → Componente raíz de React
+
+main.tsx → Punto de entrada de la aplicación
+
+index.css → Estilos globales (Tailwind CSS)
 
 Context API: manejo de estado global para este proyecto pequeño, evitando librerías externas innecesarias.
 Modular y escalable: separación clara de componentes, páginas, servicios y utilidades.
