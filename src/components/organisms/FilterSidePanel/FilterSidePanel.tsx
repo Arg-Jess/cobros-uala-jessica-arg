@@ -92,9 +92,14 @@ const FilterSidePanel: React.FC = () => {
 
   return (
     <div
-      className={`fixed top-0 right-0 h-[calc(100vh-64px)] bg-light-white shadow-lg transition-transform transform w-full md:w-[38%] ${
-        isSidePanelOpen ? 'translate-x-0' : 'translate-x-full'
-      } z-40 overflow-y-auto top-[64px] md:top-0 md:h-full`}
+      className={`
+    fixed top-0 right-0 bottom-0
+    w-full md:w-[38%]
+    bg-light-white shadow-lg
+    transition-transform transform
+    ${isSidePanelOpen ? 'translate-x-0' : 'translate-x-full'}
+    z-60 overflow-y-auto
+  `}
     >
       <div className="flex flex-col h-[calc(100vh-64px)] pt-10 pr-6 pl-6 text-secondary-grey md:h-full md:pt-10 md:pr-10 md:pl-10">
         <button

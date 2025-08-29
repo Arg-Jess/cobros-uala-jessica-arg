@@ -111,7 +111,7 @@ const PaymentsSection = () => {
 
         {isSidePanelOpen && (
           <div
-            className="fixed inset-0 bg-white z-40"
+            className="fixed inset-0 bg-white z-60"
             style={{ opacity: 0.8 }}
           />
         )}
